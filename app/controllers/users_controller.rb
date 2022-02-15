@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit({ role_ids: [] })
+    params.require(:user).permit(:role_ids)
   end
 
   def find_user

@@ -18,9 +18,14 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-   <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true %>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.select :role_ids, Role.pluck(:name)%>
   </div>
 
     <div class="field">

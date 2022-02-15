@@ -7,6 +7,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   def assign_default_role
-    add_role(:newuser) if roles.blank?
+    add_role(:developer) if roles.blank?
   end
 end

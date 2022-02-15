@@ -1,8 +1,8 @@
 <h1>Edit User Role </h1>
 <%= form_with model: @user do |form| %>
-  <div>
-  <%= form.label :role_ids, "User roles" %>
-    <%= form.select(:role_ids, Role.all, :id, :name) %>
+    <div class="field">
+        <%= f.label :role %><br />
+        <%= f.select :role_ids, Role.pluck(:name)%>
   </div>
   <%= form.submit data:{turbo:false}%>
 <% end %>
