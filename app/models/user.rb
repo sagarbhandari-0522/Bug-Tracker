@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :profile_picture
   rolify
   after_create :assign_default_role
 

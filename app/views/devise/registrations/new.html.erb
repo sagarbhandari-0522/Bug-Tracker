@@ -19,13 +19,15 @@
   </div>
 
   <div class="field">
-    <%= f.label :role %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :profile_picture %><br />
+    <%= f.file_field :profile_picture %>
   </div>
+
+  
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= f.select :role_ids, Role.pluck(:name)%>
+    <%= f.collection_select :role_ids, Role.order(:name),:id,:name, include_blank: true %>
   </div>
 
     <div class="field">
