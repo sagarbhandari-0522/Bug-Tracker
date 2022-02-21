@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_one_attached :profile_picture
   rolify
+  belongs_to :project
+  belongs_to :bug
   after_create :assign_default_role
 
   # Include default devise modules. Others available are:
