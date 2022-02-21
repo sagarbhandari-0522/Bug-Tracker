@@ -1,2 +1,3 @@
 <p> Hi i am developers </p>
+<p> <%= image_tag @user.profile_picture.representation(resize_to_limit: [200,200]) %> </p>
 <%= @user.first_name%>
