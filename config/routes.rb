@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   # resources :dashboards
   devise_for :users
+  resources :projects
   get '/project_manager/:id', to: 'dashboards#project_manager', as: 'project_manager'
   get '/developer/:id', to: 'dashboards#developer', as: 'developer'
   get '/tester/:id', to: 'dashboards#tester', as: 'tester'

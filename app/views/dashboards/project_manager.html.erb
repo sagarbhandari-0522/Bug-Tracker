@@ -1,3 +1,8 @@
 <p> Hi i am project manager </p>
 <%= @user.first_name%>
 <p> <%= image_tag @user.profile_picture.representation(resize_to_limit: [200,200]) %> </p>
+<%@projects.each do |project|%>
+<p> <%= project.title%> <%= project.description%> 
+<%= link_to 'show', project_path(project) %></p>
+<%= link_to 'New Project',new_project_path  %>
+<%end%>
