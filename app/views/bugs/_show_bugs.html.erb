@@ -1,0 +1,11 @@
+<% @project.bugs.all.each do |bug|%>
+<strong><%=bug.title%></strong>
+<%= bug.body%>
+<%= bug.status%>
+<%= link_to 'Edit', edit_project_bug_path(@project,bug)%>
+    <%= button_to 'Delete', [@project, bug], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              }%><br>
+
+<%end%>

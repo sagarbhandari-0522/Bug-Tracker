@@ -1,3 +1,7 @@
 <%= @user.first_name%>
 <p> Hi ai am tester </p>
 <p> <%= image_tag @user.profile_picture.representation(resize_to_limit: [200,200]) %> </p>
+<%@projects.each do |project|%>
+<p> <%= project.title%> 
+<%= link_to 'view details', project_bugs_path(project) %></p>
+<%end%>
