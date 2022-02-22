@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
   def index
     if current_user.has_role? :Developer
-      redirect_to developer_path(current_user)
+      redirect_to develop_path(current_user)
     elsif current_user.has_role? :Tester
       redirect_to tester_path(current_user)
     else
@@ -24,5 +24,6 @@ class DashboardsController < ApplicationController
 
   def developer
     @user = User.find_by_id(params[:id])
+    @bugs = Bug.all.where(developer_id: current_user)
   end
 end
