@@ -11,6 +11,15 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def assign
+    @bug = Bug.find_by_id(params[:id])
+    @manager = User.find_by_id(@bug.manager_id)
+  end
+
+  def assign_ticket
+    byebug
+  end
+
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
@@ -37,6 +46,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
+
     redirect_to project_manager_path(current_user)
   end
 
