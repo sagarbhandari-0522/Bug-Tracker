@@ -17,7 +17,10 @@ class ProjectsController < ApplicationController
   end
 
   def assign_ticket
-    byebug
+    @bug = Bug.find_by_id(params[:id])
+    @bug.update_attribute(:developer_id, params[:developer_id])
+    @bug.update_attribute(:status, params[:status])
+    redirect_to project_path(@bug.project_id)
   end
 
   def create

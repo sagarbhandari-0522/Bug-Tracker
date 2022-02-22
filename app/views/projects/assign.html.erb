@@ -2,6 +2,7 @@
 <strong>"Description: "</strong><%= @bug.body%><br>
 <strong>"Manager:"</strong> <%= @manager.first_name%>
 <%= form_with url: assign_ticket_developer_path do |form| %>
+  <%= form.hidden_field :id, value:(@bug.id) %>
  
    <%= form.collection_select :developer_id, User.all_developer, :id, :email%>
    <%= form.select :status, Bug.statuses.keys.to_a%>

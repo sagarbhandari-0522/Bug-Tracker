@@ -26,9 +26,10 @@ class BugsController < ApplicationController
   end
 
   def update
+    byebug
     @project = Project.find_by_id(params[:project_id])
     @bug = Bug.find_by_id(params[:id])
-    @bug.user_id = current_user.id
+    @bug.tester_id = current_user.id
     if @bug.update(bug_params)
       redirect_to project_bugs_path(@project)
     else
