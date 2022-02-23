@@ -2,6 +2,7 @@
 
 class DashboardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_user, only: %i[project_manager tester developer]
   def index
     if current_user.has_role? :Developer
       redirect_to develop_path(current_user)
@@ -13,17 +14,20 @@ class DashboardsController < ApplicationController
   end
 
   def project_manager
-    @user = User.find_by_id(params[:id])
     @projects = Project.all.where(user_id: current_user)
   end
 
   def tester
-    @user = User.find_by_id(params[:id])
     @projects = Project.all
   end
 
   def developer
-    @user = User.find_by_id(params[:id])
     @bugs = Bug.all.where(developer_id: current_user)
+  end
+
+  private
+
+  def find_user
+    @user = User.find_by_id(params[:id])
   end
 end
