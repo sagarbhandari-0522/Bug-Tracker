@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   def assign_ticket
     @bug = Bug.find_by_id(params[:id])
     @bug.update_attribute(:developer_id, params[:developer_id])
+    DeveloperMailer.with(id: params[:developer_id]).bug_assign.deliver_later
     @bug.update_attribute(:status, params[:status])
     redirect_to project_path(@bug.project_id)
   end
