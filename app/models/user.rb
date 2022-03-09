@@ -3,8 +3,8 @@
 class User < ApplicationRecord
   has_one_attached :profile_picture
   rolify
-  belongs_to :project, optional: true
-  belongs_to :bug, optional: true
+  belongs_to :project, optional: true, dependent: :destroy
+  belongs_to :bug, optional: true, dependent: :destroy
   after_create :assign_default_role
 
   # Include default devise modules. Others available are:
@@ -14,4 +14,6 @@ class User < ApplicationRecord
   def assign_default_role
     add_role(:developer) if roles.blank?
   end
+
+  scope :all_developer, -> { with_role :Developer }
 end

@@ -1,3 +1,7 @@
 <p> Hi i am developers </p>
+<%= @user.first_name %> <%= @user.last_name%>
 <p> <%= image_tag @user.profile_picture.representation(resize_to_limit: [200,200]) %> </p>
-<%= @user.first_name%>
+<%@bugs.each do |bug|%>
+<p> <%= bug.title%> <%= bug.body%> <%= bug.status%>
+<%= link_to 'edit', edit_developer_path(bug) %></p>
+<%end%>
