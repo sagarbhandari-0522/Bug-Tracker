@@ -1,0 +1,12 @@
+<strong>"Tester: "</strong><%= @bug.title%><br>
+<strong>"Description: "</strong><%= @bug.body%><br>
+<%= form_with url: "/developers" do |form| %>
+  <%= form.hidden_field :id, value:(@bug.id) %>
+ 
+   <%= form.select :status, Bug.statuses.keys.to_a%>
+
+  <p>
+    <%= form.submit data: { turbo:false } %>
+  </p>
+
+<% end %>

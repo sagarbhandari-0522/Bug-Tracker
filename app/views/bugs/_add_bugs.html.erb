@@ -1,0 +1,24 @@
+
+
+<%= form_with model:[@project, @bug] do |form| %>
+  <%= form.hidden_field :title, value:(current_user.first_name) %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <% if false %>
+    <%= form.collection_select :status_ids, Bug.statuses%>
+
+    <%= form.input :status, :as=.status, :collection => Bug.status%>
+   
+ <%end%> 
+ <% if action_name=== "edit" %>
+   <%= form.select :status, Bug.statuses.keys.to_a%>
+<% end %>
+  <p>
+    <%= form.submit data: { turbo:false } %>
+  </p>
+<% end %>
+
+
